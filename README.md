@@ -1,8 +1,9 @@
-# Yellfy cli
+# Yellfy CLI
+
+> Command line utility to install Yellfy.
 
 [![Travis](https://img.shields.io/travis/mrmlnc/yellfy-cli.svg?style=flat-square)](https://travis-ci.org/mrmlnc/yellfy-cli)
-
-Command line utility to install Yellfy.
+[![NPM version](https://img.shields.io/npm/v/yellfy-cli.svg?style=flat-square)](https://www.npmjs.com/package/yellfy-cli)
 
 This command-line utility is designed to simplify and accelerate the deployment of a new instance of Yellfy.
 
