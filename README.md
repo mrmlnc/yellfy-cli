@@ -1,6 +1,6 @@
 # Yellfy cli
 
-[![Travis](https://img.shields.io/travis/rust-lang/rust.svg?style=flat-square)](https://img.shields.io/travis/mrmlnc/yellfy-cli.svg)
+[![Travis](https://img.shields.io/travis/mrmlnc/yellfy-cli.svg?style=flat-square)](https://travis-ci.org/mrmlnc/yellfy-cli)
 
 Command line utility to install Yellfy.
 
