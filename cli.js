@@ -55,7 +55,7 @@ var repoCheckout = function() {
 
 var installDeps = function() {
   return new Promise(function(resolve, reject) {
-    console.log(chalk.cyan('>> ') + 'Start install dependencies...');
+    console.log(chalk.cyan('>> ') + 'Installing dependencies...');
     exec('npm i', function(err) {
       if (err) {
         reject(err);
@@ -66,7 +66,7 @@ var installDeps = function() {
   });
 };
 
-console.log(chalk.yellow('>> ') + 'Hello, i\'m ' + chalk.yellow('Yellfy'));
+console.log(chalk.yellow('>> ') + 'Hello, i\'m ' + chalk.yellow('Yellfy') + '!');
 repoClone('https://github.com/mrmlnc/yellfy', targetDir)
   .then(function(info) {
     if (targetDir !== cwd) {
@@ -77,7 +77,7 @@ repoClone('https://github.com/mrmlnc/yellfy', targetDir)
     return repoCheckout();
   })
   .then(function(tag) {
-    output.success('To repository settled the ' + chalk.blue(tag) + ' tag');
+    output.success('The repository switched to the tag ' + chalk.blue(tag));
     return (args.i || args.install) ? installDeps() : 'Setting Yellfy completed!';
   })
   .then(function(info) {
