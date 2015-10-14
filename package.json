@@ -1,0 +1,41 @@
+{
+  "name": "yellfy-cli",
+  "version": "1.0.0-a",
+  "description": "Command line utility to install Yellfy",
+  "license": "MIT",
+  "repository": "mrmlnc/yellfy-cli",
+  "author": {
+    "name": "Denis Malinochkin",
+    "url": "canonium.com"
+  },
+  "bin": {
+    "yellfy": "./cli.js"
+  },
+  "scripts": {
+    "test": "xo && node test.js"
+  },
+  "files": [
+    "README.md",
+    "cli.js"
+  ],
+  "keywords": [
+    "yellfy",
+    "cli"
+  ],
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "minimist": "^1.2.0"
+  },
+  "devDependencies": {
+    "ava": "^0.2.0",
+    "rimraf": "^2.4.3",
+    "xo": "^0.9.0"
+  },
+  "xo": {
+    "space": 2,
+    "rules": {
+      "object-curly-spacing": [2, "always"],
+      "space-before-function-paren": 0
+    }
+  }
+}
