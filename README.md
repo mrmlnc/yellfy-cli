@@ -1,5 +1,7 @@
 # Yellfy cli
 
+[![Travis](https://img.shields.io/travis/rust-lang/rust.svg?style=flat-square)](https://img.shields.io/travis/mrmlnc/yellfy-cli.svg)
+
 Command line utility to install Yellfy.
 
 This command-line utility is designed to simplify and accelerate the deployment of a new instance of Yellfy.
