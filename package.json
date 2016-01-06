@@ -12,7 +12,7 @@
     "yellfy": "./cli.js"
   },
   "scripts": {
-    "test": "rimraf && xo *.js && mocha test.js --timeout=15000"
+    "test": "rimraf tmp && xo *.js && mocha test.js --timeout=15000"
   },
   "files": [
     "cli.js"
