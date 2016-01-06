@@ -1,5 +1,4 @@
 var assert = require('assert');
-var rimraf = require('rimraf');
 var exec = require('child_process').exec;
 
 it('Help', function(done) {
