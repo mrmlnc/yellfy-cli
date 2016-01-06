@@ -2,7 +2,7 @@ This is a **DEVELOPER PREVIEW** intended for developers and testers only.
 
 # Yellfy CLI
 
-> Command line utility to install Yellfy.
+> Command line utility to install [Yellfy](https://github.com/mrmlnc/yellfy).
 
 [![Travis](https://img.shields.io/travis/mrmlnc/yellfy-cli.svg?style=flat-square)](https://travis-ci.org/mrmlnc/yellfy-cli)
 [![NPM version](https://img.shields.io/npm/v/yellfy-cli.svg?style=flat-square)](https://www.npmjs.com/package/yellfy-cli)
