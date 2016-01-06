@@ -17,18 +17,17 @@ it('Destination path is not an empty directory', function(done) {
     if (err) {
       assert.fail(err);
     }
-    assert.equal(stderr, '>> Destination path is not an empty directory\n');
+    assert.equal(/\>\> Destination path is not/.test(stderr), true);
     done();
   });
 });
 
 it('Yellfy with options', function(done) {
-  rimraf.sync('tmp');
-  exec('node cli.js --dir=tmp --tag=1.0.0-a', function(err, stdout) {
+  exec('node cli.js --dir=tmp/default --tag=1.0.0-a', function(err, stdout) {
     if (err) {
       assert.fail(err);
     }
-    assert.equal(stdout.indexOf('1.0.0-a') > 0, true);
+    assert.equal(/1.0.0-a/.test(stdout), true);
     done();
   });
 });
