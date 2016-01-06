@@ -1,10 +1,29 @@
 #!/usr/bin/env node
+'use strict';
 var path = require('path');
 var chalk = require('chalk');
 var exec = require('child_process').exec;
-var args = require('minimist')(process.argv);
+var args = require('minimist')(process.argv.slice(2));
 var cwd = process.cwd();
 var targetDir = (args.dir) ? path.join(cwd, args.dir) : cwd;
+
+console.log(chalk.yellow('>> ') + 'Hello, i\'m ' + chalk.yellow('Yellfy') + '!');
+if (args.h || args.help || args._[0] === 'help') {
+  console.log(
+    chalk.yellow('   Usage:\n'),
+    '    $ yellfy [<options>]\n\n',
+    chalk.yellow('  Options:\n'),
+    '    -h, --help, help    Show help\n',
+    '    --dir               The deployment instance Yellfy in the specified directory\n',
+    '    --tag               Install the specified version\n',
+    '    -i, --install       Start the installation dependencies after you deploy an instance Yellfy.\n\n',
+    chalk.yellow('  Examples:\n'),
+    '    $ yellfy --dir=tmp/yellfy\n',
+    '    $ yellfy --tag=1.0.0-a\n',
+    '    $ yellfy -i'
+  );
+  process.exit();
+}
 
 var output = {
   err: function(message) {
@@ -66,7 +85,6 @@ var installDeps = function() {
   });
 };
 
-console.log(chalk.yellow('>> ') + 'Hello, i\'m ' + chalk.yellow('Yellfy') + '!');
 repoClone('https://github.com/mrmlnc/yellfy', targetDir)
   .then(function(info) {
     if (targetDir !== cwd) {

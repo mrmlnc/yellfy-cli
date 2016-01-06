@@ -11,6 +11,8 @@ This is a **DEVELOPER PREVIEW** intended for developers and testers only.
 
 This command-line utility is designed to simplify and accelerate the deployment of a new instance of Yellfy.
 
+![Yellfy CLI](https://cloud.githubusercontent.com/assets/7034281/12154330/eb5e162a-b4cf-11e5-99ae-edd2cdcb2da3.png)
+
 ## Usage
 
 ```shell
