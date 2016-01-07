@@ -17,16 +17,16 @@ const cwd = process.cwd();
 const cli = meow({
   description: `Hello, i'm ${chalk.yellow('Yellfy') }!`,
   help: `
-  Usage:
+  ${chalk.yellow('Usage:')}
     $ yellfy [<options>]
 
-  Options:
+  ${chalk.yellow('Options:')}
     -h, --help, help  Show help
     --dir             The deployment instance Yellfy in the specified directory
     --tag             Install the specified version
     -i, --install     Start the installation dependencies after you deploy an instance Yellfy
 
-  Examples:
+  ${chalk.yellow('Examples:')}
     $ yellfy --dir=tmp/yellfy
     $ yellfy --tag=1.0.0-a
 `
