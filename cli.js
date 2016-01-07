@@ -1,110 +1,69 @@
 #!/usr/bin/env node
+
 'use strict';
-var path = require('path');
-var chalk = require('chalk');
-var exec = require('child_process').exec;
-var args = require('minimist')(process.argv.slice(2));
-var cwd = process.cwd();
-var targetDir = (args.dir) ? path.join(cwd, args.dir) : cwd;
 
-console.log(chalk.yellow('>> ') + 'Hello, i\'m ' + chalk.yellow('Yellfy') + '!');
-if (args.h || args.help || args._[0] === 'help') {
-  console.log(
-    chalk.yellow('   Usage:\n'),
-    '    $ yellfy [<options>]\n\n',
-    chalk.yellow('  Options:\n'),
-    '    -h, --help, help    Show help\n',
-    '    --dir               The deployment instance Yellfy in the specified directory\n',
-    '    --tag               Install the specified version\n',
-    '    -i, --install       Start the installation dependencies after you deploy an instance Yellfy.\n\n',
-    chalk.yellow('  Examples:\n'),
-    '    $ yellfy --dir=tmp/yellfy\n',
-    '    $ yellfy --tag=1.0.0-a\n',
-    '    $ yellfy -i'
-  );
-  process.exit();
-}
+// Node.js libs
+const path = require('path');
+// Common libs
+const chalk = require('chalk');
+const meow = require('meow');
+// Local libs
+const git = require('./lib/git');
+const utils = require('./lib/utils');
+// Common vars
+const cwd = process.cwd();
 
-var output = {
-  err: function(message) {
-    console.error(chalk.red('>> ') + message);
-  },
-  success: function(message) {
-    console.log(chalk.green('>> ') + message);
+// If the user wants to see a help screen
+const cli = meow({
+  description: `Hello, i'm ${chalk.yellow('Yellfy') }!`,
+  help: `
+  Usage:
+    $ yellfy [<options>]
+
+  Options:
+    -h, --help, help  Show help
+    --dir             The deployment instance Yellfy in the specified directory
+    --tag             Install the specified version
+    -i, --install     Start the installation dependencies after you deploy an instance Yellfy
+
+  Examples:
+    $ yellfy --dir=tmp/yellfy
+    $ yellfy --tag=1.0.0-a
+`
+}, {
+  alias: {
+    h: 'help',
+    i: 'install'
   }
-};
+});
 
-var repoClone = function(gitUrl, targetDir) {
-  return new Promise(function(resolve, reject) {
-    exec('git clone ' + gitUrl + ' ' + targetDir, function(err) {
-      if (err) {
-        reject(err);
-      }
+// Welcome display
+utils.log.yellfy(`Hello, i'm ${chalk.yellow('Yellfy') }!`);
 
-      resolve('Repository cloned into ' + chalk.cyan(targetDir));
-    });
-  });
-};
-
-var repoCheckout = function() {
-  return new Promise(function(resolve, reject) {
-    exec('git tag -l', function(err, stdout) {
-      if (err) {
-        reject(err);
-      }
-
-      var tag = args.tag;
-      if (!args.tag) {
-        var tags = stdout.toString().split('\n').filter(function(tag) {
-          return /^(\d+\.)?(\d+\.)?(\*|\d+)$/.test(tag);
-        });
-        tag = tags[tags.length - 1];
-      }
-
-      exec('git checkout ' + tag, function(err) {
-        if (err) {
-          reject(err);
-        }
-
-        resolve(tag);
-      });
-    });
-  });
-};
-
-var installDeps = function() {
-  return new Promise(function(resolve, reject) {
-    console.log(chalk.cyan('>> ') + 'Installing dependencies...');
-    exec('npm i', function(err) {
-      if (err) {
-        reject(err);
-      }
-
-      resolve('All dependencies are installed. Setting Yellfy completed!');
-    });
-  });
-};
-
-repoClone('https://github.com/mrmlnc/yellfy', targetDir)
-  .then(function(info) {
+// Clone repo
+const targetDir = (cli.flags.dir) ? path.join(cwd, cli.flags.dir) : cwd;
+git.repoClone('https://github.com/mrmlnc/yellfy', targetDir)
+  .then(() => {
+    // If used a specified directory
     if (targetDir !== cwd) {
       process.chdir(targetDir);
     }
 
-    output.success(info);
-    return repoCheckout();
+    utils.log.success(`Repository cloned into ${chalk.cyan(targetDir)}`);
+    return git.repoCheckout(cli.flags.tag);
   })
-  .then(function(tag) {
-    output.success('The repository switched to the tag ' + chalk.blue(tag));
-    return (args.i || args.install) ? installDeps() : 'Setting Yellfy completed!';
+  .then((tag) => {
+    utils.log.success(`The repository switched to the tag ${chalk.blue(tag)}`);
+    return (cli.flags.install) ? utils.installDeps() : 'Setting Yellfy completed!';
   })
-  .then(function(info) {
-    output.success(info);
+  .then((info) => {
+    utils.log.success(info);
   })
-  .catch(function(err) {
+  .catch((err) => {
     if (err.code === 128) {
-      output.err('Destination path is not an empty directory');
-    } else {
-      throw err;
+      utils.log.err('Destination path is not an empty directory');
+      return;
     }
+
+    throw err;
   });
