@@ -12,9 +12,11 @@
     "yellfy": "./cli.js"
   },
   "scripts": {
-    "test": "rimraf tmp && xo *.js && mocha test.js --timeout=15000"
+    "test": "rimraf tmp && xo && mocha test.js --timeout=15000"
   },
   "files": [
+    "lib",
+    "templates",
     "cli.js"
   ],
   "keywords": [
@@ -23,8 +25,11 @@
   ],
   "dependencies": {
     "chalk": "^1.1.1",
+    "elegant-status": "^1.0.0",
+    "fs-extra": "^0.26.4",
     "meow": "^3.7.0",
-    "promise": "^7.1.1"
+    "promise": "^7.1.1",
+    "read-pkg-up": "^1.0.1"
   },
   "devDependencies": {
     "mocha": "^2.3.4",
