@@ -11,7 +11,7 @@ This is a **DEVELOPER PREVIEW** intended for developers and testers only.
 
 This command-line utility is designed to simplify and accelerate the deployment of a new instance of Yellfy.
 
-![Yellfy CLI](https://cloud.githubusercontent.com/assets/7034281/12154330/eb5e162a-b4cf-11e5-99ae-edd2cdcb2da3.png)
+![Yellfy CLI](https://cloud.githubusercontent.com/assets/7034281/12374689/78c4b532-bcb4-11e5-8d04-ad14d0dfd83c.png)
 
 ## Usage
 
@@ -39,7 +39,7 @@ For example:
 $ yellfy --tag=1.0.0-a
 ```
 
-#### `-i` (install)
+#### `-i, --install`
 
 Start the installation dependencies after you deploy an instance Yellfy.
 
@@ -47,6 +47,37 @@ For example:
 
 ```shell
 $ yellfy -i
+```
+
+#### `--page`
+
+Creating a new page.
+
+For example:
+
+```shell
+$ yellfy --page=features
+```
+
+#### `--comp, --component`
+
+Creating a new component.
+
+For example:
+
+```shell
+$ yellfy --component=jumbotron
+```
+
+#### `-r`
+
+Overwrite an existing page or component.
+
+For example:
+
+```shell
+$ yellfy --page=features -r
+$ yellfy --component=jumbotron -r
 ```
 
 ## License
