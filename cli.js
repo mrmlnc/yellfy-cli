@@ -17,8 +17,7 @@ const utils = require('./lib/utils');
 // Common vars
 const cwd = process.cwd();
 const pkg = readPkgUp.sync().pkg;
-// Indicators
-let statusDone = status('Cloning the repository...');
+let gitTag;
 
 // If the user wants to see a help screen
 const cli = meow({
@@ -88,6 +87,7 @@ if (cli.flags.page || cli.flags.comp) {
 
 // Clone repo
 const targetDir = (cli.flags.dir) ? path.join(cwd, cli.flags.dir) : cwd;
+let statusDone = status(`Cloning the repository to "${targetDir}"...`);
 git.repoClone('https://github.com/mrmlnc/yellfy', targetDir)
   .then(() => {
     if (targetDir !== cwd) {
@@ -95,27 +95,27 @@ git.repoClone('https://github.com/mrmlnc/yellfy', targetDir)
     }
 
     statusDone(true);
-    statusDone = status('Switching version...');
+    statusDone = status(`Switching repository version...`);
     return git.repoCheckout(cli.flags.tag);
   })
   .then((tag) => {
+    gitTag = tag;
     statusDone(true);
-    if (cli.flags.i) {
-      statusDone = status('Installing dependencies...');
-      return utils.installDeps();
-    }
-
     statusDone = status('Remove git...');
     fs.removeSync('.git');
     statusDone(true);
-    utils.log.ok(`The repository switched to the tag ${chalk.blue(tag)}.`);
-    utils.log.ok(`Setting ${chalk.yellow('Yellfy')} completed!`);
+    if (cli.flags.i) {
+      statusDone = status('Installing npm dependencies...');
+      return utils.installDeps();
+    }
   })
   .then(() => {
     if (cli.flags.i) {
       statusDone(true);
-      utils.log.ok(`Setting ${chalk.yellow('Yellfy')} completed!`);
     }
+
+    utils.log.ok(`The repository switched to the tag ${chalk.blue(gitTag)}`);
+    utils.log.ok(`Setting ${chalk.yellow('Yellfy')} completed!`);
   })
   .catch((err) => {
     statusDone(false);
