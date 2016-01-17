@@ -1,5 +1,3 @@
-This is a **DEVELOPER PREVIEW** intended for developers and testers only.
-
 # Yellfy CLI
 
 > Command line utility to install [Yellfy](https://github.com/mrmlnc/yellfy).
