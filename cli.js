@@ -60,7 +60,7 @@ if (cli.flags.page || cli.flags.comp) {
 
   // Page
   if (cli.flags.page) {
-    const name = cli.flags.page;
+    const name = cli.flags.page.toString();
     const pagePath = path.join('app/templates', `${name}.html`);
     if (!utils.existsSync(pagePath) || cli.flags.r) {
       files.createPage(name);
@@ -72,7 +72,7 @@ if (cli.flags.page || cli.flags.comp) {
 
   // Component
   if (cli.flags.comp) {
-    const name = cli.flags.comp;
+    const name = cli.flags.comp.toString();
     const compPath = path.join('app/templates/components', `_${name}.html`);
     if (!utils.existsSync(compPath) || cli.flags.r) {
       files.createComponent(cli.flags.comp);
