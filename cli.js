@@ -61,7 +61,7 @@ if (cli.flags.page || cli.flags.comp) {
   // Page
   if (cli.flags.page) {
     const name = cli.flags.page.toString();
-    const pagePath = path.join('app/templates', `${name}.html`);
+    const pagePath = path.join('app/templates', `${name}.jade`);
     if (!utils.existsSync(pagePath) || cli.flags.r) {
       files.createPage(name);
       utils.log.ok(`The page "${name}" was created!`);
@@ -73,7 +73,7 @@ if (cli.flags.page || cli.flags.comp) {
   // Component
   if (cli.flags.comp) {
     const name = cli.flags.comp.toString();
-    const compPath = path.join('app/templates/components', `_${name}.html`);
+    const compPath = path.join('app/templates/components', `_${name}.jade`);
     if (!utils.existsSync(compPath) || cli.flags.r) {
       files.createComponent(cli.flags.comp);
       utils.log.ok(`The component "${name}" was created!`);
