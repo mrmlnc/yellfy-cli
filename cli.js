@@ -34,11 +34,14 @@ const cli = meow({
     --page               Creating a page (templates + styles)
     --comp, --component  Creating a component (template + styles)
     -r                   Overwrite the page or component
+    --sass, --scss       Create a page or component with Scss syntax
+    --stylus, --styl     Create a page or component with Stylus syntax
 
   ${chalk.yellow('Examples:')}
     $ yellfy --dir=tmp/yellfy
     $ yellfy --tag=1.0.0-a
     $ yellfy --page=features
+    $ yellfy --comp=adsense --sass
 `
 }, {
   alias: {
@@ -61,9 +64,9 @@ if (cli.flags.page || cli.flags.comp) {
   // Page
   if (cli.flags.page) {
     const name = cli.flags.page.toString();
-    const pagePath = path.join('app/templates', `${name}.jade`);
+    const pagePath = `app/templates/${name}.jade`;
     if (!utils.existsSync(pagePath) || cli.flags.r) {
-      files.createPage(name);
+      files.createPage(name, cli.flags);
       utils.log.ok(`The page "${name}" was created!`);
     } else {
       utils.log.err(`A page with this name ("${name}") already exists. Use "-r" to overwrite it.`);
@@ -73,9 +76,9 @@ if (cli.flags.page || cli.flags.comp) {
   // Component
   if (cli.flags.comp) {
     const name = cli.flags.comp.toString();
-    const compPath = path.join('app/templates/components', `_${name}.jade`);
+    const compPath = `app/templates/components/_${name}.jade`;
     if (!utils.existsSync(compPath) || cli.flags.r) {
-      files.createComponent(cli.flags.comp);
+      files.createComponent(cli.flags.comp, cli.flags);
       utils.log.ok(`The component "${name}" was created!`);
     } else {
       utils.log.err(`A component with this name ("${name}") already exists. Use "-r" to overwrite it.`);
