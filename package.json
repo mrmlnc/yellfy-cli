@@ -1,6 +1,6 @@
 {
   "name": "yellfy-cli",
-  "version": "1.0.0-a",
+  "version": "1.0.0",
   "description": "Command line utility to install Yellfy",
   "license": "MIT",
   "repository": "mrmlnc/yellfy-cli",
