@@ -13,7 +13,7 @@
   },
   "scripts": {
     "pretest": "rimraf out .tmp && tslint src/**/*.ts && tsc",
-    "test": "mocha out/**/*.spec.js --timeout=25000",
+    "test": "mocha out/cli.spec.js --timeout=25000",
     "prepublish": "npm run test",
     "start": "rimraf out .tmp && tsc --watch"
   },
