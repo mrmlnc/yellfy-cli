@@ -1,4 +1,4 @@
-<p align="right">English description | <a href="README_RU.md">Описание на русском</a></p>
+<p align="right">English description | <a href="README_RU.md">РћРїРёСЃР°РЅРёРµ РЅР° СЂСѓСЃСЃРєРѕРј</a></p>
 
 # yellfy-cli
 
