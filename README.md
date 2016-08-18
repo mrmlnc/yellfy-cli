@@ -1,3 +1,5 @@
+<p align="right">English description | <a href="README_RU.md">Описание на русском</a></p>
+
 # yellfy-cli
 
 > CLI interface for [Yellfy](https://github.com/mrmlnc/yellfy).
