@@ -1,83 +1,50 @@
-<p align="right">English description | <a href="README_RU.md">Описание на русском</a></p>
+# yellfy-cli
 
-# Yellfy CLI
-
-> Command line utility to install [Yellfy](https://github.com/mrmlnc/yellfy).
+> CLI interface for [Yellfy](https://github.com/mrmlnc/yellfy).
 
 [![Travis](https://img.shields.io/travis/mrmlnc/yellfy-cli.svg?style=flat-square)](https://travis-ci.org/mrmlnc/yellfy-cli)
 [![NPM version](https://img.shields.io/npm/v/yellfy-cli.svg?style=flat-square)](https://www.npmjs.com/package/yellfy-cli)
-[![devDependency Status](https://img.shields.io/david/mrmlnc/yellfy-cli.svg?style=flat-square)](https://david-dm.org/mrmlnc/yellfy-cli#info=dependencies)
-[![devDependency Status](https://img.shields.io/david/dev/mrmlnc/yellfy-cli.svg?style=flat-square)](https://david-dm.org/mrmlnc/yellfy-cli#info=devDependencies)
 
-This command-line utility is designed to simplify and accelerate the deployment of a new instance of Yellfy.
+Yellfy CLI is a command-line utility that simplifies the process of deploying a new instance Yellfy and then work with it.
 
-![Yellfy CLI](https://cloud.githubusercontent.com/assets/7034281/12374689/78c4b532-bcb4-11e5-8d04-ad14d0dfd83c.png)
+![gif](https://cloud.githubusercontent.com/assets/7034281/17782945/75c02e8e-657e-11e6-9937-d33b45996629.gif)
+
+## Install
+
+```shell
+$ npm i -g yellfy-cli
+```
 
 ## Usage
 
 ```shell
-$ yellfy [--dir, --tag, -i, --install, ...]
+Usage:
+  $ yellfy [<options>]
+
+Options:
+  -h, --help       Show help
+  -d, --dir        The deployment instance Yellfy in the specified directory
+  -t, --tag        Install the specified version
+  -i, --install    Start the installation dependencies after you deploy an instance Yellfy
+  -p, --page       Creating a page (templates + styles)
+  -с, --component  Creating a component (template + styles)
+  -r, --rewrite    Overwrite the page or component
+
+Examples:
+  $ yellfy -d tmp/yellfy -i
+  $ yellfy -t 2.0.0
+  $ yellfy -p features
+  $ yellfy -c adsense
 ```
 
-#### --dir
+## Related
 
-The deployment instance Yellfy in the specified directory.
+  * [yellfy](https://github.com/mrmlnc/yellfy)
 
-```shell
-$ yellfy --dir=tmp/yellfy
-```
+## Changelog
 
-#### --tag
-
-By default, after installation you get latest stable version Yellfy. To install any available version you can use the option `--tag`.
-
-```shell
-$ yellfy --tag=1.0.0-a
-```
-
-#### -i, --install
-
-Start the installation dependencies after you deploy an instance Yellfy.
-
-```shell
-$ yellfy -i
-```
-
-#### --page
-
-Creating a new page.
-
-```shell
-$ yellfy --page=features
-```
-
-Optional:
-
-  * `--sass, --scss`
-  * `--stylus, --styl`
-
-#### --comp, --component
-
-Creating a new component.
-
-```shell
-$ yellfy --component=jumbotron
-```
-
-Optional:
-
-  * `--sass, --scss`
-  * `--stylus, --styl`
-
-#### -r
-
-Overwrite an existing page or component.
-
-```shell
-$ yellfy --page=features -r
-$ yellfy --component=jumbotron -r
-```
+See the [Releases section of our GitHub project](https://github.com/mrmlnc/yellfy-cli/releases) for changelogs for each release version.
 
 ## License
 
-MIT.
+This software is released under the terms of the MIT license.
