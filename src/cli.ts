@@ -22,7 +22,7 @@ export interface IOptions {
   };
   pkg: {
     yellfy: {
-      path: string;
+      templates: string;
       html: string;
       css: string;
     }

@@ -27,9 +27,9 @@ export async function createPage(options: IOptions): Promise<any> {
 
     spinner.text = ' Read project templates.';
     const templates = {
-      index: await io.readFile(`${options.pkg.yellfy.path}/page.index.${html}.tpl`),
-      markup: await io.readFile(`${options.pkg.yellfy.path}/page.markup.${html}.tpl`),
-      styles: await io.readFile(`${options.pkg.yellfy.path}/page.styles.${css}.tpl`)
+      index: await io.readFile(`${options.pkg.yellfy.templates}/page.index.${html}.tpl`),
+      markup: await io.readFile(`${options.pkg.yellfy.templates}/page.markup.${html}.tpl`),
+      styles: await io.readFile(`${options.pkg.yellfy.templates}/page.styles.${css}.tpl`)
     };
     spinner.succeed();
 
@@ -64,8 +64,8 @@ export async function createComponent(options: IOptions): Promise<any> {
 
     spinner.text = ' Read project templates.';
     const templates = {
-      markup: await io.readFile(`${options.pkg.yellfy.path}/component.markup.${html}.tpl`),
-      styles: await io.readFile(`${options.pkg.yellfy.path}/component.styles.${css}.tpl`)
+      markup: await io.readFile(`${options.pkg.yellfy.templates}/component.markup.${html}.tpl`),
+      styles: await io.readFile(`${options.pkg.yellfy.templates}/component.styles.${css}.tpl`)
     };
     spinner.succeed();
 
