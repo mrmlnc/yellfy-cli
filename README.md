@@ -2,6 +2,8 @@
 
 # Yellfy CLI
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/mrmlnc/yellfy-cli.svg)](https://greenkeeper.io/)
+
 > Command line utility to install [Yellfy](https://github.com/mrmlnc/yellfy).
 
 [![Travis](https://img.shields.io/travis/mrmlnc/yellfy-cli.svg?style=flat-square)](https://travis-ci.org/mrmlnc/yellfy-cli)

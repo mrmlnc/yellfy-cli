@@ -26,15 +26,15 @@
   "dependencies": {
     "chalk": "^1.1.1",
     "elegant-status": "^1.0.0",
-    "fs-extra": "^0.26.4",
+    "fs-extra": "^3.0.0",
     "meow": "^3.7.0",
     "promise": "^7.1.1",
-    "read-pkg-up": "^1.0.1"
+    "read-pkg-up": "^2.0.0"
   },
   "devDependencies": {
-    "mocha": "^2.3.4",
+    "mocha": "^3.3.0",
     "rimraf": "^2.5.0",
-    "xo": "^0.10.1"
+    "xo": "^0.18.2"
   },
   "xo": {
     "space": 2,
